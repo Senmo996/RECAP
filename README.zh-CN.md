@@ -2,9 +2,20 @@
 
 [English](README.md) | **简体中文**
 
-RECAP（REcycling Context-Aware Predictions）的独立、最小推理代码库。
-支持 **Qwen2.5-VL** 和 **LLaVA / LLaVA-Next**，无需训练或额外 draft model。
-整个目录可以单独复制使用，不依赖原工程的 `MMSpec`、`new_dream`、`method` 或数据路径。
+本仓库提供以下论文的**官方源代码**：
+
+> **RECAP: Context-Aware Prediction Recycling with Request-Local and Persistent Memories for Multimodal Speculative Decoding**
+
+**RECAP**（REcycling Context-Aware Predictions）是一种无需训练的多模态推测解码方法。
+它复用目标模型自身的预测来加速视觉语言模型推理，无需额外的 draft model。
+为区分不同图像和文本前缀下的预测，RECAP 将跨请求保留的 token 级记忆与以二元、三元
+上下文为键的请求内记忆相结合；根据键的具体程度与基于熵的置信度融合检索到的预测，
+构建候选树并补充后缀匹配的连续序列，最后通过一次目标模型前向计算验证整棵树。
+
+本次发布提供论文核心推理方法的独立实现，支持 **Qwen2.5-VL** 和 **LLaVA / LLaVA-Next**，
+包含 Python/C++ 树构建器、可运行示例及紧凑的配对评测入口。
+评测协议及其与论文实验的关系见[紧凑评测](#紧凑评测)；
+方法组件与默认配置见[保留的算法与命名](#保留的算法与命名)。
 
 ## 安装
 

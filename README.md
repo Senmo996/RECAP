@@ -2,10 +2,23 @@
 
 **English** | [简体中文](README.zh-CN.md)
 
-A standalone, minimal inference implementation of **RECAP** (REcycling Context-Aware Predictions).
-Supports **Qwen2.5-VL** and **LLaVA / LLaVA-Next** without training or an auxiliary draft model.
-This directory can be copied and used independently. It has no runtime dependency on the original
-experiment repository's `MMSpec`, `new_dream`, `method`, or dataset paths.
+This repository provides the **official source code** for the paper:
+
+> **RECAP: Context-Aware Prediction Recycling with Request-Local and Persistent Memories for Multimodal Speculative Decoding**
+
+**RECAP** (REcycling Context-Aware Predictions) is a training-free method for multimodal
+speculative decoding. It accelerates vision-language model inference by reusing the target model's
+own predictions, without an auxiliary draft model. To account for differences in images and text
+prefixes, RECAP combines persistent token-level memory with request-local memories indexed by
+two- and three-token contexts. It fuses retrieved predictions using key specificity and
+entropy-based confidence, constructs a candidate tree with suffix-matched continuations, and
+verifies the tree in a single target-model pass.
+
+This release provides a standalone implementation of the paper's core inference method for
+**Qwen2.5-VL** and **LLaVA / LLaVA-Next**, including Python/C++ tree builders, runnable examples,
+and compact paired evaluation. For the evaluation protocol and its relationship to the paper's
+experiments, see [Compact evaluation](#compact-evaluation). See [Algorithm and API](#algorithm-and-api)
+for the method's components and default configuration.
 
 ## Installation
 
