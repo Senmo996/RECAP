@@ -9,6 +9,7 @@ outputs/
 
 # Keep the standalone distribution visible inside the parent experiment repo.
 !README.md
+!README.zh-CN.md
 !NOTICE.md
 !requirements.txt
 !scripts/
