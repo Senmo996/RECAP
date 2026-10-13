@@ -1,0 +1,19 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+outputs/
+.venv/
+
+# Keep the standalone distribution visible inside the parent experiment repo.
+!README.md
+!NOTICE.md
+!requirements.txt
+!scripts/
+!scripts/*.sh
+!examples/*.jsonl
+!examples/*.png
+!tests/
+!tests/*.py

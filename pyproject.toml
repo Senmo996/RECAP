@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=70"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "recap-vlm"
+version = "0.1.0"
+description = "RECAP: Context-Aware Prediction Recycling for Multimodal Speculative Decoding"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+dependencies = [
+    "torch==2.7.1",
+    "torchvision==0.22.1",
+    "transformers==4.57.1",
+    "accelerate>=1.6,<2",
+    "Pillow>=11,<13",
+    "sentencepiece>=0.2,<0.3",
+    "protobuf>=5,<7",
+]
+
+[project.optional-dependencies]
+cpp = ["ninja>=1.11"]
+test = ["pytest>=8"]
+
+[project.scripts]
+recap = "recap.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+recap = ["*.cpp"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
